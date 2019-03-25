@@ -28,4 +28,4 @@ Route::delete('/tasks/{id}', 'TaskController@destroy');
 
 
 
-Route::get('/hello', 'HelloController@index');
+Route::get('/hello/{id?}', 'HelloController@index');
