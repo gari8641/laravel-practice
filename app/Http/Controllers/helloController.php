@@ -8,10 +8,10 @@ use Illuminate\Http\Response;
 
 class helloController extends Controller
 {
-  public function index($id='zero') {
+  public function index(Request $request) {
     $data = [
       'msg' => 'これはコントローラから渡されたMSG。変数渡すときは連想配列でやる必要があるっぽい',
-      'id' => $id
+      'id' => $request->id
     ];
     return view('hello.index', $data);
   }
