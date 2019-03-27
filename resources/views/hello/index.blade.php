@@ -11,11 +11,11 @@ margin:-20px 0px -30px 0px; letter-spacing:-4pt; }
 </head>
 <body>
   <h1>Blade/Index</h1>
-  @if ($msg != '')
+  @isset ($msg)
   <p>こんにちは、{{$msg}}さん。</p>
   @else
   <p>何か書いてください。</p>
-  @endif
+  @endisset
   <form method="POST" action="/hello">
     {{ csrf_field() }}
     <input type="text" name="msg">
