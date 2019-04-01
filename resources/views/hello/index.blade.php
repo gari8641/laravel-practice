@@ -1,32 +1,17 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <title>Hello/Index</title>
-<style>
-  body {font-size:16pt; color:#999;}
-  h1 {font-size:50pt; text-align:right; color:#f6f6f6;
-margin:-20px 0px -30px 0px; letter-spacing:-4pt; }
-</style>
-</head>
-<body>
-  <h1>Blade/Index-1</h1>
-  <p>&#064;wihleディレクティブの例</p>
-  <ol>
-    @php
-    $counter = 0;
-    @endphp
+@extends('hello.layouts.helloapp')
 
-    @while ($counter < count($data))
-      <li>{{$data[$counter]}}</li>
+@section('title','Index')
 
-      @php
-        $counter++;
-      @endphp
+@section('menubar')
+  @parent
+  インデックスページ
+@endsection
 
-    @endwhile
+@section('content')
+<p>ここが本文のコンテンツです</p>
+<p>必要なだけ記述できます。</p>
+@endsection
 
-
-  </ol>
-</body>
-</html>
+@section('footer')
+copyright 2019 miyata.
+@endsection
