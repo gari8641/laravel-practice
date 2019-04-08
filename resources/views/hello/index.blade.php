@@ -1,4 +1,4 @@
-@extends('hello.layouts.helloapp')
+@extends('layouts.helloapp')
 
 @section('title','Index')
 
@@ -8,20 +8,9 @@
 @endsection
 
 @section('content')
-<p>ここが本文のコンテンツです</p>
-<p>必要なだけ記述できます。</p>
+  <p>ここが本文のコンテンツです</p>
 
-  @component('components.message')
-
-    @slot('msg_title')
-      CAUTION!
-    @endslot
-
-    @slot('msg_content')
-      これはメッセージの表示です。
-    @endslot
-
-  @endcomponent
+  @each('components.item', $data, 'item')
 
 @endsection
 
