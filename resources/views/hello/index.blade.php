@@ -10,7 +10,9 @@
 @section('content')
   <p>ここが本文のコンテンツです</p>
 
-  @each('components.item', $data, 'item')
+  <p>Controoler value<br>'message' = {{$message}}</p>
+  <p>ViewComposer value<br>'view_message' = {{$view_message}}</p>
+
 
 @endsection
 
