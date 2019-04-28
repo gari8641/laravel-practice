@@ -29,5 +29,6 @@ Route::delete('/tasks/{id}', 'TaskController@destroy');
 
 use App\Http\Middleware\HelloMiddleWare;
 
-Route::get('/hello', 'HelloController@index');
+Route::get('/hello', 'HelloController@index')
+  ->middleware('hello');
 Route::post('/hello', 'HelloController@post');
