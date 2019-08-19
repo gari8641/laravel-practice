@@ -10,7 +10,7 @@ use Validator;
 use Illuminate\Support\Facades\DB;
 
 
-class helloController extends Controller
+class HelloController extends Controller
 {
   public function index(Request $request)
   {
