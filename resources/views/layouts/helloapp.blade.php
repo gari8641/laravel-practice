@@ -13,11 +13,7 @@
     .content {margin:10px; }
     .footer { text-align:right: font-size:10pt; margin:10px;
       border-bottom:solid 1px #ccc; color:#ccc; }
-<<<<<<< HEAD
-=======
-
->>>>>>> 59eec357aea8b376e505a565afed1deb5009c7e3
-    th {background-color:#999; color:fff; padding:5px 10px;}
+    th {background-color:#999; color:#fff; padding:5px 10px;}
     td {border: solid 1px #aaa; color:#999; padding:5px 10px;}
   </style>
 </head>
