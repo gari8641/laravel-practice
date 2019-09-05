@@ -78,4 +78,16 @@ class HelloController extends Controller
     return redirect('/hello');
   }
 
+  public function show(Request $request)
+  {
+    $id = $request->id;
+    // URLにパラメタ指定すると指定したレコード表示できるやつ。
+    // メソッドチェーン
+    // where(フィールド名, 値)。first()は、ヒットしたレコードのうち、最初の1件だけを返す。get()はすべて返す。
+    //
+    $item = DB::table('people')->where('id', $id)->first();
+    return view('hello.show', ['item' => $item]);
+  }
+
+
 }
