@@ -82,15 +82,17 @@ class HelloController extends Controller
 
   public function show(Request $request)
   {
-    $min = $request->min;
-    $max = $request->max;
-
-    // URLのパラメータに、/show?min=20&max=50 と入力すれば、20歳以上、50歳以下のレコードを検索する
+    // http://localhost:8080/hello/show?page=0 とかでアクセスする
+    // 0ってのはページ数。
+    // offsetで10指定すると11からレコード取得する
+    // offsetで指定された数値の次の数値からlimitで指定した数だけ取得する
+    // 以下は、3つずつレコード表示する。
+    // page=1とすると4〜6番目のレコードが表示される
+    $page = $request->page;
     $items = DB::table('people')
-      ->whereRaw('age >= ? and age <= ?',
-        [$min, $max])->get();
+      ->offset($page * 3)
+      ->limit(3)
+      ->get();
     return view('hello.show', ['items' => $items]);
   }
-
-
 }
