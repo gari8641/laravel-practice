@@ -40,9 +40,8 @@ class HelloController extends Controller
       'age' => $request->age,
     ];
 
-
-    // :nameとかは、プレースホルダ（SQL文）。$paramの値がつっこまれる
-    DB::insert('insert into people (name, mail, age) values (:name, :mail, :age)', $param);
+    // 
+    DB::table('people')->insert($param);
 
     // 最後に、/helloにリダイレクトする
     return redirect('/hello');
