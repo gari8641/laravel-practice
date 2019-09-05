@@ -82,6 +82,7 @@ class HelloController extends Controller
   {
     $name = $request->name;
     // orWhereは、whereを指定した後に指定する
+    // whereやorWhereは、パラメータ結合に対応していない
     $items = DB::table('people')
       ->where('name', 'like', '%' . $name . '%')
       ->orWhere('mail', 'like', '%' . $name . '%')
