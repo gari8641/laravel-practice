@@ -80,13 +80,13 @@ class HelloController extends Controller
 
   public function show(Request $request)
   {
-    $name = $request->name;
-    // orWhereは、whereを指定した後に指定する
-    // whereやorWhereは、パラメータ結合に対応していない
+    $min = $request->min;
+    $max = $request->max;
+
+    // URLのパラメータに、/show?min=20&max=50 と入力すれば、20歳以上、50歳以下のレコードを検索する
     $items = DB::table('people')
-      ->where('name', 'like', '%' . $name . '%')
-      ->orWhere('mail', 'like', '%' . $name . '%')
-      ->get();
+      ->whereRaw('age >= ? and age <= ?',
+        [$min, $max])->get();
     return view('hello.show', ['items' => $items]);
   }
 
