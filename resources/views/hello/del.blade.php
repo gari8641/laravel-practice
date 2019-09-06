@@ -12,7 +12,6 @@
   <table>
   <form action="/hello/del" method="post"">
     {{ csrf_field() }}
-<!-- "{{$form->id}}" っつーやつで、まず更新するレコードを取得しておく必要がある -->
     <input type="hidden" name="id" value="{{$form->id}}">
     <tr> <th>name: </th><td><input type="text" name="name" value="{{$form->name}}"></td></tr>
     <tr> <th>mail: </th><td><input type="text" name="mail" value="{{$form->mail}}"></td></tr>
