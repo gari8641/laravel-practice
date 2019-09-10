@@ -20,10 +20,10 @@ class PersonController extends Controller
 
   public function search(Request $request)
   {
-    // where (フィールド, 値)
-    $item = Person::where('name', $request->input)->first();
-    // 全レコードを得たい場合は、where (フィールド, 値)->get
-    //
+    // 自分でapp/Person.php に定義したモデルクラスのローカルスコープを利用する。
+    // メソッド名は'scopeNameEqual'と定義しているが、最初の'scope'は不要で、
+    // 'nameEaual'と指定する
+    $item = Person::nameEqual($request->input)->first();
     $param = ['input' => $request->input, 'item' => $item];
     return view('person.find', $param);
   }

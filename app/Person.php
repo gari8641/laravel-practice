@@ -11,4 +11,10 @@ class Person extends Model
   {
     return $this->id . ': ' . $this->name . ' (' . $this->age . ')';
   }
+
+  // ローカルスコープ P239
+  public function scopeNameEqual($query, $str)
+  {
+    return $query->where('name', $str);
+  }
 }
