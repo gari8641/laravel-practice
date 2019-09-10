@@ -17,4 +17,17 @@ class Person extends Model
   {
     return $query->where('name', $str);
   }
+
+  // 指定した年齢以上
+  public function scopeAgeGreaterThan($query, $n)
+  {
+    return $query->where('age','>=', $n);
+  }
+
+  // 指定した年齢以下
+  public function scopeAgeLessThan($query, $n)
+  {
+    return $query->where('age','<=', $n);
+  }
+
 }

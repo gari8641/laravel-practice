@@ -20,10 +20,11 @@ class PersonController extends Controller
 
   public function search(Request $request)
   {
-    // 自分でapp/Person.php に定義したモデルクラスのローカルスコープを利用する。
-    // メソッド名は'scopeNameEqual'と定義しているが、最初の'scope'は不要で、
-    // 'nameEaual'と指定する
-    $item = Person::nameEqual($request->input)->first();
+    // テキストボックスに指定した数字〜数字+10の範囲でwhereする
+    $min = $request->input * 1;
+    $max = $min + 10;
+    $item = Person::ageGreaterThan($min)->
+      ageLessThan($max)->first();
     $param = ['input' => $request->input, 'item' => $item];
     return view('person.find', $param);
   }
