@@ -8,6 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 // グローバルスコープのために追加
 use Illuminate\Database\Eloquent\Builder;
 
+
+// ScopePersonクラスを利用する p245
+use App\Scopes\ScopePerson;
+
 class Person extends Model
 {
     // モデルクラスにプロパティを追加し独自に拡張する
@@ -40,12 +44,8 @@ class Person extends Model
   {
     parent::boot();
 
-    // 第一引数はスコープの名前、
-    // 第二引数にクロージャ（Builderインスタンスが引数で渡される。これを使って絞り込み処理する）
-    // 年齢が20より大きいものだけに絞る
-    static::addGlobalScope('age', function (Builder $builder) {
-      $builder->where('age', '>', 20);
-    });
+    // ScopePersonクラスを利用する p245
+    static::addGlobalScope(new ScopePerson);
   }
 
 }
