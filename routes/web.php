@@ -62,3 +62,9 @@ Route::post('person/edit', 'PersonController@update');
 // Eloquent モデルの削除 p255
 Route::get('person/del', 'PersonController@delete');
 Route::post('person/del', 'PersonController@remove');
+
+// Eloquent リレーション 別のテーブル（boards）追加 p266
+Route::get('board', 'BoardController@index');
+
+Route::get('board/add', 'BoardController@add');
+Route::post('board/add', 'BoardController@create');
