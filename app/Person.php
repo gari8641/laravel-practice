@@ -14,6 +14,19 @@ use App\Scopes\ScopePerson;
 
 class Person extends Model
 {
+  //モデルの新規作成ここから
+
+  // $guardedは「値を用意しておかない項目」。idみたいに自動で値が割り振られるものに設定する
+  protected $guarded = array('id');
+
+  public static $rules = array (
+    'name' => 'required',
+    'mail' => 'email',
+    'age' => 'integer|min:0|max:150'
+  );
+  //モデルの新規作成ここまで
+  //
+  //
     // モデルクラスにプロパティを追加し独自に拡張する
   public function getData()
   {
