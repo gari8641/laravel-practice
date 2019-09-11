@@ -1,6 +1,6 @@
 @extends('layouts.helloapp')
 
-@sectoin('title', 'Person.Add')
+@section('title', 'Person.Add')
 
 @section('menubar')
   @parent
@@ -13,7 +13,7 @@
   @if (count($errors) > 0)
   <div>
     <ul>
-      @foreach($errors->all() as $error))
+      @foreach($errors->all() as $error)
       <li>{{ $error }}</li>
       @endforeach
     </ul>
@@ -22,7 +22,7 @@
   <table>
     <form action="/person/add" method="post">
       {{ csrf_field() }}
-      <!-- oldは、前回入力した空いたを取り出すのに使う p248 -->
+      <!-- oldは、前回入力した値を取り出すのに使う p248 -->
       <tr> <th>name: </th><td><input type="text" name="name" value="{{old('name')}}"></td> </tr>
       <tr> <th>mail: </th><td><input type="text" name="mail" value="{{old('mail')}}"></td> </tr>
       <tr> <th>age: </th><td><input type="number" name="age" value="{{old('age')}}"></td> </tr>

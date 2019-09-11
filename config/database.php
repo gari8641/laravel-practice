@@ -40,9 +40,10 @@ return [
             'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
         ],
 
+            //'host' => env('DB_HOST', '172.21.0.4'),
         'mysql' => [
             'driver' => 'mysql',
-            'host' => env('DB_HOST', '172.21.0.4'),
+            'host' => env('DB_HOST', '172.18.0.4'),
             'port' => env('DB_PORT', '3306'),
             'database' => env('DB_DATABASE', 'nyumon'),
             'username' => env('DB_USERNAME', 'root'),

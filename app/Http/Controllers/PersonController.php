@@ -42,7 +42,9 @@ class PersonController extends Controller
     $person = new Person;
     $form = $request->all();
     unset($form['_token']);
-    $person->fill($form)->save;
+
+    // save()の、'()'を１回つけ忘れてた…
+    $person->fill($form)->save();
     return redirect('/person');
   }
 }
