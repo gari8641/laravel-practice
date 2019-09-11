@@ -54,3 +54,7 @@ Route::post('person/find', 'PersonController@search');
 // Eloquent モデルの作成 p249
 Route::get('person/add', 'PersonController@add');
 Route::post('person/add', 'PersonController@create');
+
+// Eloquent モデルの更新 p253
+Route::get('person/edit', 'PersonController@edit');
+Route::post('person/edit', 'PersonController@update');
