@@ -41,9 +41,19 @@ class PersonController extends Controller
     $this->validate($request, Person::$rules);
     $person = new Person;
     $form = $request->all();
+
+    // _token は、CSRF用非表示フィールドとして用意される項目。テーブルにない項目なので予め削除しておく。 p250
     unset($form['_token']);
 
-    // save()の、'()'を１回つけ忘れてた…
+    // save()の、'()'をつけ忘れてた…
+    // fillメソッドは、引数に用意されている配列の値をモデルのプロパティに代入するもの。個々のプロパティをまとめて設定できる。
+    // 1つ1つの値をインスタンスに設定する場合は、以下。fillでやってることと同じ。
+    // $person = new Person;
+    // $person->name = $request->name;
+    // $person->mail = $request->mail;
+    // $person->age = $request->age;
+    // $person->save();
+    //
     $person->fill($form)->save();
     return redirect('/person');
   }
