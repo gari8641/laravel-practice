@@ -14,6 +14,13 @@ use App\Scopes\ScopePerson;
 
 class Person extends Model
 {
+  // has One 主テーブルであるpeapleと従テーブルであるboardsの関連付け p268
+  public function board()
+  {
+    return $this->hasOne('App\Board');
+  }
+
+
   //モデルの新規作成ここから
 
   // $guardedは「値を用意しておかない項目」。idみたいに自動で値が割り振られるものに設定する

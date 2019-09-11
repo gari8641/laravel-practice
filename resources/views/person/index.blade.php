@@ -9,9 +9,17 @@
 
 @section('content')
  <table>
-   <tr> <th>Data</th> </tr>
+   <tr> <th>Person</th><th>Board</th> </tr>
    @foreach ($items as $item)
-    <tr> <td>{{$item->getData()}}</td> </tr>
+    <tr>
+      <td>{{$item->getData()}}</td>
+      <td>@if ($item->board != null)
+        <!-- リレーションの設定を行っているために、$item->board というプロパティとしてあつかえる。 -->
+
+              {{$item->board->getData()}}
+          @endif
+      </td>
+    </tr>
    @endforeach
  </table>
 @endsection
