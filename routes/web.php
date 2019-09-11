@@ -58,3 +58,7 @@ Route::post('person/add', 'PersonController@create');
 // Eloquent モデルの更新 p253
 Route::get('person/edit', 'PersonController@edit');
 Route::post('person/edit', 'PersonController@update');
+
+// Eloquent モデルの削除 p255
+Route::get('person/del', 'PersonController@delete');
+Route::post('person/del', 'PersonController@remove');
