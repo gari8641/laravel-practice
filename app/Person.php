@@ -14,10 +14,10 @@ use App\Scopes\ScopePerson;
 
 class Person extends Model
 {
-  // has One 主テーブルであるpeapleと従テーブルであるboardsの関連付け p268
-  public function board()
+  // has many 主テーブルであるpeapleと従テーブルであるboardsの、対複数の関連付け p270
+  public function boards()
   {
-    return $this->hasOne('App\Board');
+    return $this->hasMany('App\Board');
   }
 
 
