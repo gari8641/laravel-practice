@@ -15,8 +15,14 @@ class Board extends Model
     'message' => 'required'
   );
 
+  // 従テーブルboardsから主テーブルpeopleの1要素を取り出すためのbelongsTo
+  public function person()
+  {
+    return $this->belongsTo('App\Person');
+  }
+
   public function getData()
   {
-    return $this->id . ': ' . $this->title;
+    return $this->id . ': ' . $this->title . ' (' . $this->person->name . ')';
   }
 }
