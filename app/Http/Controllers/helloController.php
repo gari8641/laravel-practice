@@ -101,4 +101,10 @@ class HelloController extends Controller
       ->get();
     return view('hello.show', ['items' => $items]);
   }
+
+  // Rest. helloのページからRestにアクセスする p293
+  public function rest(Request $request)
+  {
+    return view('hello.rest');
+  }
 }
