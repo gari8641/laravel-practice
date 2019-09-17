@@ -75,3 +75,7 @@ Route::resource('rest', 'RestappController');
 
 // Rest. helloのページからRestにアクセスする p293
 Route::get('hello/rest', 'HelloController@rest');
+
+// sessoin. p299
+Route::get('hello/session', 'HelloController@ses_get');
+Route::post('hello/session', 'HelloController@ses_put');
