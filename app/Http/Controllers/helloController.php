@@ -17,11 +17,19 @@ class HelloController extends Controller
 {
   public function index(Request $request)
   {
-    // DB::table(テーブル名)->simplePaginate(ページ数)
-    //$items = DB::table('people')->simplePaginate(5);
-    // モデルでやる場合
-    $items = Person::simplePaginate(5);
-    return view('hello.index', ['items' => $items]);
+    $sort = $request->sort;
+
+    if (!$sort){
+      $sort = 'id';
+    }
+    // 並び替えはorderByをメソッドチェーンの途中に記述する
+    // simplePaginateは必ず最後に呼び出すようにする。じゃないとエラーになる
+    // DBクラスでやる場合
+    //$items = DB::table('people')->orderBy($sort, 'asc')->simplePaginate(5);
+    $items = Person::orderBy($sort, 'asc')->simplePaginate(5);
+
+    $param = ['items' => $items, 'sort' => $sort];
+    return view('hello.index', $param);
   }
 
 
