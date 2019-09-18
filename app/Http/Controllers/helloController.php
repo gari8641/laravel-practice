@@ -9,14 +9,18 @@ use Validator;
 
 use Illuminate\Support\Facades\DB;
 
+// ペジネーション p304
+use App\Person;
+
 
 class HelloController extends Controller
 {
   public function index(Request $request)
   {
-    // /hello/ でアクセスする
-    // orderBy(フィールド名, 'ascまたはdesc')
-    $items = DB::table('people')->orderBy('age', 'asc')->get();
+    // DB::table(テーブル名)->simplePaginate(ページ数)
+    //$items = DB::table('people')->simplePaginate(5);
+    // モデルでやる場合
+    $items = Person::simplePaginate(5);
     return view('hello.index', ['items' => $items]);
   }
 
