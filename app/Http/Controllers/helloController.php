@@ -22,11 +22,12 @@ class HelloController extends Controller
     if (!$sort){
       $sort = 'id';
     }
+
     // 並び替えはorderByをメソッドチェーンの途中に記述する
     // simplePaginateは必ず最後に呼び出すようにする。じゃないとエラーになる
     // DBクラスでやる場合
-    //$items = DB::table('people')->orderBy($sort, 'asc')->simplePaginate(5);
-    $items = Person::orderBy($sort, 'asc')->simplePaginate(5);
+    $items = DB::table('people')->orderBy($sort, 'asc')->simplePaginate(5);
+    //$items = Person::orderBy($sort, 'asc')->simplePaginate(5);
 
     $param = ['items' => $items, 'sort' => $sort];
     return view('hello.index', $param);
