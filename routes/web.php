@@ -29,7 +29,10 @@ Route::delete('/tasks/{id}', 'TaskController@destroy');
 
 use App\Http\Middleware\HelloMiddleWare;
 
-Route::get('/hello', 'HelloController@index');
+// ログイン必須にする. middleware('auth') p322
+Route::get('/hello', 'HelloController@index')
+  ->middleware('auth');
+
 Route::post('/hello', 'HelloController@post');
 
 Route::get('/hello/add', 'HelloController@add');
