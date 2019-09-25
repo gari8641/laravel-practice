@@ -16,6 +16,9 @@
     th {background-color:#999; color:#fff; padding:5px 10px;}
     td {border: solid 1px #aaa; color:#999; padding:5px 10px;}
   </style>
+
+  <!-- app.cssは、Bootstrapが持ってるスタイルシートを内包してる p315 -->
+  <link rel="stylesheet" type="text/css" href="/css/app.css">
 </head>
 <body>
   <h1>@yield('title')</h1>
