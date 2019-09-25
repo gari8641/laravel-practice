@@ -12,25 +12,25 @@ use Illuminate\Support\Facades\DB;
 // ペジネーション p304
 use App\Person;
 
+// 認証p318
+use Illuminate\Support\Facades\Auth;
+
 
 class HelloController extends Controller
 {
   public function index(Request $request)
   {
+    // 認証 p318
+    // Auth:user()は、ログインしているユーザーのモデルインスタンスを返す。
+    // （AuthではUserというモデルクラスが用意されている）
+    $user = Auth::user();
     $sort = $request->sort;
 
-    if (!$sort){
-      $sort = 'id';
-    }
+    // URLにsort=xxのパラメタつけないとエラーになるからその対応.
+    if(!$sort){$sort='age';}
 
-    // 並び替えはorderByをメソッドチェーンの途中に記述する
-    // simplePaginateは必ず最後に呼び出すようにする。じゃないとエラーになる
-    // simplePaginateはカレント前後のリンクのみ。Paginateはページ数リンクも生成される
-    // DBクラスでやる場合
-    $items = DB::table('people')->orderBy($sort, 'asc')->Paginate(5);
-    //$items = Person::orderBy($sort, 'asc')->Paginate(5);
-
-    $param = ['items' => $items, 'sort' => $sort];
+    $items = Person::orderBy($sort, 'asc')->simplePaginate(5);
+    $param = ['items' => $items, 'sort' => $sort, 'user' => $user];
     return view('hello.index', $param);
   }
 

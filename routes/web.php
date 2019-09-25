@@ -79,3 +79,7 @@ Route::get('hello/rest', 'HelloController@rest');
 // sessoin. p299
 Route::get('hello/session', 'HelloController@ses_get');
 Route::post('hello/session', 'HelloController@ses_put');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
