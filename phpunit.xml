@@ -29,5 +29,8 @@
         <env name="MAIL_DRIVER" value="array"/>
         <env name="QUEUE_CONNECTION" value="sync"/>
         <env name="SESSION_DRIVER" value="array"/>
+        <!-- ユニットテスト用のDBの設定を追記 p327 -->
+        <!-- MySQL上に作成したdatabase名を指定 -->
+        <env name="DB_DATABASE" value="database_test"/>
     </php>
 </phpunit>
