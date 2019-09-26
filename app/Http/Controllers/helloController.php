@@ -135,4 +135,24 @@ class HelloController extends Controller
     $request->session()->put('msg', $msg);
     return redirect('hello/session');
   }
+
+  // オリジナルログイン認証処理 p323
+  public function getAuth(Request $request)
+  {
+    $param = ['message' => 'ログインして下さい。'];
+    return view('hello.auth', $param);
+  }
+
+  public function postAuth(Request $request)
+  {
+    $email = $request->email;
+    $password = $request->password;
+    if (Auth::attempt(['email' => $email, 'password' => $password])) {
+      $msg = 'ログインしました。(' . Auth::user()->name . ')';
+    } else {
+      $msg = 'ログインに失敗しました。';
+    }
+    return view('hello.auth', ['message' => $msg]);
+
+  }
 }

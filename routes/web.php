@@ -86,3 +86,7 @@ Route::post('hello/session', 'HelloController@ses_put');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+// うまく動かんから、書籍に書いてないけどRouteが必要なんだと思うので追加。p324
+Route::get('/hello/auth', 'HelloController@getAuth');
+Route::post('/hello/auth', 'HelloController@postAuth');
